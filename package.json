@@ -13,7 +13,7 @@
     "ios/Plugin/",
     "MozartecCapacitorMicrophone.podspec"
   ],
-  "author": "Mozart",
+  "author": "Mozart <mozart.alkhateeb@gmail.com> (https://mozartec.com/)",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,0 +1,6 @@
+{
+	"appId": "com.mozartec.capacitor.microphone.angular",
+	"appName": "AngularMicrophone",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

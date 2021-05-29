@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AngularMicrophone</string>
+    <string name="title_activity_main">AngularMicrophone</string>
+    <string name="package_name">com.mozartec.capacitor.microphone.angular</string>
+    <string name="custom_url_scheme">com.mozartec.capacitor.microphone.angular</string>
+</resources>
