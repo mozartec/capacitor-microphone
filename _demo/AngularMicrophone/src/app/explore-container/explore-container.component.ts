@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Microphone } from '@mozartec/capacitor-microphone'
+import { AudioRecording, Microphone } from '@mozartec/capacitor-microphone'
 
 @Component({
   selector: 'app-explore-container',
@@ -9,6 +9,8 @@ import { Microphone } from '@mozartec/capacitor-microphone'
 export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
+  recording: AudioRecording;
+
   constructor() { }
 
   ngOnInit() { }
@@ -17,6 +19,16 @@ export class ExploreContainerComponent implements OnInit {
     Microphone.echo({
       value: "Hello Code 🤓"
     });
+  }
+
+  async startRecording() {
+    await Microphone.requestPermissions();
+    await Microphone.startRecording();
+  }
+
+  async stopRecording() {
+    this.recording = await Microphone.stopRecording();
+    console.log('recording: ' + JSON.stringify(this.recording));
   }
 
 }
