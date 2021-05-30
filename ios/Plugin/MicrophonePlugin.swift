@@ -9,14 +9,6 @@ import AVFoundation
 public class MicrophonePlugin: CAPPlugin {
     private var implementation: Microphone? = nil
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        implementation = Microphone()
-        call.resolve([
-            "value": implementation!.echo(value)
-        ])
-    }
-    
     @objc override public func checkPermissions(_ call: CAPPluginCall) {
         var result: [String: Any] = [:]
         for permission in MicrophonePermissionType.allCases {

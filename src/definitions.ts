@@ -1,7 +1,6 @@
 import type { PermissionState } from '@capacitor/core';
 
 export interface MicrophonePlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
   checkPermissions(): Promise<PermissionStatus>;
   requestPermissions(): Promise<PermissionStatus>;
   startRecording(): Promise<void>;
