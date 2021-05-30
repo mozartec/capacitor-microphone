@@ -42,8 +42,4 @@ import AVFAudio
     func getOutputFile() -> URL {
         return audioFilePath
     }
-    
-    @objc public func echo(_ value: String) -> String {
-        return value
-    }
 }
