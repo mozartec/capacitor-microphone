@@ -7,10 +7,11 @@ import AVFoundation
  */
 @objc(MicrophonePlugin)
 public class MicrophonePlugin: CAPPlugin {
-    private var implementation: Microphone?
+    private var implementation: Microphone? = nil
 
     @objc func echo(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""
+        implementation = Microphone()
         call.resolve([
             "value": implementation!.echo(value)
         ])
@@ -18,7 +19,7 @@ public class MicrophonePlugin: CAPPlugin {
     
     @objc override public func checkPermissions(_ call: CAPPluginCall) {
         var result: [String: Any] = [:]
-        for permission in AudioRecorderPermissionType.allCases {
+        for permission in MicrophonePermissionType.allCases {
             let state: String
             switch permission {
             case .microphone:
@@ -31,11 +32,11 @@ public class MicrophonePlugin: CAPPlugin {
     
     @objc override public func requestPermissions(_ call: CAPPluginCall) {
         // get the list of desired types, if passed
-        let typeList = call.getArray("permissions", String.self)?.compactMap({ (type) -> AudioRecorderPermissionType? in
-            return AudioRecorderPermissionType(rawValue: type)
+        let typeList = call.getArray("permissions", String.self)?.compactMap({ (type) -> MicrophonePermissionType? in
+            return MicrophonePermissionType(rawValue: type)
         }) ?? []
         // otherwise check everything
-        let permissions: [AudioRecorderPermissionType] = (typeList.count > 0) ? typeList : AudioRecorderPermissionType.allCases
+        let permissions: [MicrophonePermissionType] = (typeList.count > 0) ? typeList : MicrophonePermissionType.allCases
         // request the permissions
         let group = DispatchGroup()
         for permission in permissions {

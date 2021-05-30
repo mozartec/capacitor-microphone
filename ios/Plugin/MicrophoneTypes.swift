@@ -59,6 +59,6 @@ enum Messages: String {
     case RECORDING_STARTED = "RECORDING_STARTED"
 }
 
-enum AudioRecorderPermissionType: String, CaseIterable {
+enum MicrophonePermissionType: String, CaseIterable {
     case microphone
 }
