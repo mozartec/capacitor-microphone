@@ -55,32 +55,32 @@ public class MicrophonePlugin: CAPPlugin {
     
     @objc func startRecording(_ call: CAPPluginCall) {
         if(!isAudioRecordingPermissionGranted()) {
-            call.reject(Messages.MISSING_MICROPHONE_PERMISSION.rawValue)
+            call.reject(StatusMessageTypes.microphonePermissionNotGranted.rawValue)
             return
         }
         
         if(implementation != nil) {
-            call.reject(Messages.ALREADY_RECORDING.rawValue)
+            call.reject(StatusMessageTypes.recordingInProgress.rawValue)
             return
         }
         
         implementation = Microphone()
         if(implementation == nil) {
-            call.reject(Messages.CANNOT_RECORD_ON_THIS_PHONE.rawValue)
+            call.reject(StatusMessageTypes.cannotRecordOnThisPhone.rawValue)
             return
         }
         
         let successfullyStartedRecording = implementation!.startRecording()
         if successfullyStartedRecording == false {
-            call.reject(Messages.CANNOT_RECORD_ON_THIS_PHONE.rawValue)
+            call.reject(StatusMessageTypes.cannotRecordOnThisPhone.rawValue)
         } else {
-            call.resolve(["status": Messages.RECORDING_STARTED.rawValue])
+            call.resolve(["status": StatusMessageTypes.recordingStared.rawValue])
         }
     }
     
     @objc func stopRecording(_ call: CAPPluginCall) {
         if(implementation == nil) {
-            call.reject(Messages.RECORDING_HAS_NOT_STARTED.rawValue)
+            call.reject(StatusMessageTypes.noRecordingInProgress.rawValue)
             return
         }
         
@@ -89,7 +89,7 @@ public class MicrophonePlugin: CAPPlugin {
         let audioFileUrl = implementation?.getOutputFile()
         if(audioFileUrl == nil) {
             implementation = nil
-            call.reject(Messages.FAILED_TO_FETCH_RECORDING.rawValue)
+            call.reject(StatusMessageTypes.failedToFetchRecording.rawValue)
             return
         }
         
@@ -107,7 +107,7 @@ public class MicrophonePlugin: CAPPlugin {
         )
         implementation = nil
         if audioRecording.base64String == nil || audioRecording.duration < 0 {
-            call.reject(Messages.FAILED_TO_FETCH_RECORDING.rawValue)
+            call.reject(StatusMessageTypes.failedToFetchRecording.rawValue)
         } else {
             call.resolve(audioRecording.toDictionary())
         }

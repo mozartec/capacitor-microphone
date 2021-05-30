@@ -48,15 +48,15 @@ struct AudioRecording {
     }
 }
 
-enum Messages: String {
-    case MISSING_MICROPHONE_PERMISSION = "MISSING_MICROPHONE_PERMISSION"
-    case CANNOT_RECORD_ON_THIS_PHONE = "CANNOT_RECORD_ON_THIS_PHONE"
-    case FAILED_TO_RECORD = "FAILED_TO_RECORD"
-    case RECORDING_HAS_NOT_STARTED = "RECORDING_HAS_NOT_STARTED"
-    case FAILED_TO_FETCH_RECORDING = "FAILED_TO_FETCH_RECORDING"
-    case ALREADY_RECORDING = "ALREADY_RECORDING"
-    case MICROPHONE_IS_BUSY = "MICROPHONE_IS_BUSY"
-    case RECORDING_STARTED = "RECORDING_STARTED"
+enum StatusMessageTypes: String {
+    case microphonePermissionNotGranted = "microphone permission not granted"
+    case cannotRecordOnThisPhone = "cannot record on this phone"
+    case recordingFailed = "recording failed"
+    case noRecordingInProgress = "no recording in progress"
+    case failedToFetchRecording = "failed to fetch recording"
+    case recordingInProgress = "recording in progress"
+    case microphoneIsBusy = "microphone is busy"
+    case recordingStared = "recording stared"
 }
 
 enum MicrophonePermissionType: String, CaseIterable {
