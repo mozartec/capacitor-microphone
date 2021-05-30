@@ -3,7 +3,7 @@
 This Microphone API provides the ability to interact with the microphone and record Audio
 
 ## Platform support
-| IOS                | Android            | Web <small>*[1](#notes)*</small> |
+| IOS                | Android            | Web                |
 | ------------------ | ------------------ | ------------------ |
 | :heavy_check_mark: | :construction:     | :x:                |
 
