@@ -15,11 +15,21 @@ export class HomeComponent implements OnInit {
   ngOnInit() { }
 
   async checkPermissions() {
-    await Microphone.checkPermissions();
+    try {
+      const checkPermissionsResult = await Microphone.checkPermissions();
+      console.log('checkPermissionsResult: ' + JSON.stringify(checkPermissionsResult));
+    } catch (error) {
+      console.log('checkPermissions Error: ' + JSON.stringify(error));
+    }
   }
 
   async requestPermissions() {
-    await Microphone.requestPermissions();
+    try {
+      const requestPermissionsResult = await Microphone.requestPermissions();
+      console.log('requestPermissionsResult: ' + JSON.stringify(requestPermissionsResult));
+    } catch (error) {
+      console.log('requestPermissions Error: ' + JSON.stringify(error));
+    }
   }
 
   async startRecording() {
