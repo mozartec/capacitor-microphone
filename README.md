@@ -5,7 +5,7 @@ This Microphone API provides the ability to interact with the microphone and rec
 ## Platform support
 | IOS                | Android            | Web                |
 | ------------------ | ------------------ | ------------------ |
-| :heavy_check_mark: | :construction:     | :x:                |
+| :heavy_check_mark: | :heavy_check_mark: | :x:                |
 
 
 ## Installation
