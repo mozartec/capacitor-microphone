@@ -3,9 +3,11 @@
 This Microphone API provides the ability to interact with the microphone and record Audio
 
 ## Platform support
-| IOS                | Android            | Web                |
-| ------------------ | ------------------ | ------------------ |
-| :heavy_check_mark: | :heavy_check_mark: | :x:                |
+|              | IOS                  | Android            | Web                |
+| ------------ |--------------------- | ------------------ | ------------------ |
+| Availability | :heavy_check_mark:   | :heavy_check_mark: | :x:                |
+| Encoding     | kAudioFormatMPEG4AAC | MPEG_4 / AAC       | :x:                |
+| Extension    | .m4a                 | .m4a               | :x:                |
 
 
 ## Installation
