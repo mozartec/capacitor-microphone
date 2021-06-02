@@ -23,6 +23,7 @@ public class MicrophonePlugin: CAPPlugin {
     }
     
     @objc override public func requestPermissions(_ call: CAPPluginCall) {
+        // TODO: (CHECK) We are not even sending permission list (Do we need it ?)
         // get the list of desired types, if passed
         let typeList = call.getArray("permissions", String.self)?.compactMap({ (type) -> MicrophonePermissionType? in
             return MicrophonePermissionType(rawValue: type)
