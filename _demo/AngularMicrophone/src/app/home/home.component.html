@@ -34,13 +34,22 @@
 
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>Web Path</ion-label>
+        <ion-label>Web Paths</ion-label>
       </ion-item-divider>
-      <ion-item>
-        <audio controls >
-          <source src="{{recording?.webPath}}" type="{{recording?.mimeType}}">
-        Your browser does not support the audio element.
+      <ion-item *ngFor="let webPath of webPaths">
+        <audio controls>
+          <source src="{{webPath}}" type="{{recording?.mimeType}}">
+          Your browser does not support the audio element.
         </audio>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Data Urls</ion-label>
+      </ion-item-divider>
+      <ion-item *ngFor="let dataUrl of dataUrls">
+        <ion-input value="{{dataUrl}}"></ion-input>
       </ion-item>
     </ion-item-group>
   </ion-list>
