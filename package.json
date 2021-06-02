@@ -25,7 +25,12 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "ionic",
+    "ios",
+    "android",
+    "microphone",
+    "audio recorder"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
