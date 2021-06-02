@@ -1,9 +1,31 @@
 import type { PermissionState } from '@capacitor/core';
 
 export interface MicrophonePlugin {
+  /**
+   * Checks microphone permission
+   * @returns {PermissionStatus} PermissionStatus
+   * @since 0.0.3
+   */
   checkPermissions(): Promise<PermissionStatus>;
+
+  /**
+   * Requests microphone permission
+   * @returns {Promise<PermissionStatus>} PermissionStatus
+   * @since 0.0.3
+   */
   requestPermissions(): Promise<PermissionStatus>;
+
+  /**
+   * Starts recoding session if no session is in progress
+   * @since 0.0.3
+   */
   startRecording(): Promise<void>;
+
+  /**
+   * Stops recoding session if one is in progress
+   * @returns {Promise<AudioRecording>} AudioRecording
+   * @since 0.0.3
+   */
   stopRecording(): Promise<AudioRecording>;
 }
 

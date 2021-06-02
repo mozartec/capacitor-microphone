@@ -38,7 +38,11 @@ npx cap sync
 checkPermissions() => any
 ```
 
+Checks microphone permission
+
 **Returns:** <code>any</code>
+
+**Since:** 0.0.3
 
 --------------------
 
@@ -49,7 +53,11 @@ checkPermissions() => any
 requestPermissions() => any
 ```
 
+Requests microphone permission
+
 **Returns:** <code>any</code>
+
+**Since:** 0.0.3
 
 --------------------
 
@@ -60,7 +68,11 @@ requestPermissions() => any
 startRecording() => any
 ```
 
+Starts recoding session if no session is in progress
+
 **Returns:** <code>any</code>
+
+**Since:** 0.0.3
 
 --------------------
 
@@ -71,7 +83,11 @@ startRecording() => any
 stopRecording() => any
 ```
 
+Stops recoding session if one is in progress
+
 **Returns:** <code>any</code>
+
+**Since:** 0.0.3
 
 --------------------
 
