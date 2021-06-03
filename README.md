@@ -28,6 +28,7 @@ npx cap sync
 * [`startRecording()`](#startrecording)
 * [`stopRecording()`](#stoprecording)
 * [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 
 </docgen-index>
 
@@ -37,14 +38,12 @@ npx cap sync
 ### checkPermissions()
 
 ```typescript
-checkPermissions() => any
+checkPermissions() => Promise<PermissionStatus>
 ```
 
 Checks microphone permission
 
-**Returns:** <code>any</code>
-
-**Since:** 0.0.3
+**Returns:** <code>Promise&lt;<a href="#permissionstatus">PermissionStatus</a>&gt;</code>
 
 --------------------
 
@@ -52,14 +51,12 @@ Checks microphone permission
 ### requestPermissions()
 
 ```typescript
-requestPermissions() => any
+requestPermissions() => Promise<PermissionStatus>
 ```
 
 Requests microphone permission
 
-**Returns:** <code>any</code>
-
-**Since:** 0.0.3
+**Returns:** <code>Promise&lt;<a href="#permissionstatus">PermissionStatus</a>&gt;</code>
 
 --------------------
 
@@ -67,14 +64,10 @@ Requests microphone permission
 ### startRecording()
 
 ```typescript
-startRecording() => any
+startRecording() => Promise<void>
 ```
 
 Starts recoding session if no session is in progress
-
-**Returns:** <code>any</code>
-
-**Since:** 0.0.3
 
 --------------------
 
@@ -82,14 +75,12 @@ Starts recoding session if no session is in progress
 ### stopRecording()
 
 ```typescript
-stopRecording() => any
+stopRecording() => Promise<AudioRecording>
 ```
 
 Stops recoding session if one is in progress
 
-**Returns:** <code>any</code>
-
-**Since:** 0.0.3
+**Returns:** <code>Promise&lt;<a href="#audiorecording">AudioRecording</a>&gt;</code>
 
 --------------------
 
@@ -99,9 +90,9 @@ Stops recoding session if one is in progress
 
 #### PermissionStatus
 
-| Prop             | Type                                                                                   |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| **`microphone`** | <code>"prompt" \| "prompt-with-rationale" \| "granted" \| "denied" \| "limited"</code> |
+| Prop             | Type                                                                            |
+| ---------------- | ------------------------------------------------------------------------------- |
+| **`microphone`** | <code><a href="#microphonepermissionstate">MicrophonePermissionState</a></code> |
 
 
 #### AudioRecording
@@ -115,5 +106,18 @@ Stops recoding session if one is in progress
 | **`duration`**     | <code>number</code> |
 | **`format`**       | <code>string</code> |
 | **`mimeType`**     | <code>string</code> |
+
+
+### Type Aliases
+
+
+#### MicrophonePermissionState
+
+<code><a href="#permissionstate">PermissionState</a> | 'limited'</code>
+
+
+#### PermissionState
+
+<code>'prompt' | 'prompt-with-rationale' | 'granted' | 'denied'</code>
 
 </docgen-api>
