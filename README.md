@@ -97,15 +97,15 @@ Stops recoding session if one is in progress
 
 #### AudioRecording
 
-| Prop               | Type                |
-| ------------------ | ------------------- |
-| **`base64String`** | <code>string</code> |
-| **`dataUrl`**      | <code>string</code> |
-| **`path`**         | <code>string</code> |
-| **`webPath`**      | <code>string</code> |
-| **`duration`**     | <code>number</code> |
-| **`format`**       | <code>string</code> |
-| **`mimeType`**     | <code>string</code> |
+| Prop               | Type                | Description                                                                                                     |
+| ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **`base64String`** | <code>string</code> | The base64 encoded string representation of the audio file.                                                     |
+| **`dataUrl`**      | <code>string</code> | The url starting with 'data:audio/aac;base64,' and the base64 encoded string representation of the audio file.  |
+| **`path`**         | <code>string</code> | platform-specific file URL that can be read later using the Filesystem API.                                     |
+| **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing. |
+| **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                               |
+| **`format`**       | <code>string</code> | file extension (only .m4a supported on this version)                                                            |
+| **`mimeType`**     | <code>string</code> | file encoding (kAudioFormatMPEG4AAC for IOS) and (MPEG_4 / AAC for android) both return "audio/aac"             |
 
 
 ### Type Aliases

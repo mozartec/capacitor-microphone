@@ -126,7 +126,7 @@ public class MicrophonePlugin extends Plugin {
                     newUri.toString(),
                     webURL,
                     duration,
-                    ".acc",
+                    ".m4a",
                     "audio/aac"
             );
             if (base64String == null || duration < 0)
