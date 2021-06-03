@@ -1,6 +1,6 @@
 {
   "name": "@mozartec/capacitor-microphone",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This Microphone API provides the ability to interact with the microphone and record Audio",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
