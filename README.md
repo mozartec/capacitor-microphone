@@ -35,7 +35,7 @@ This API requires the following permission to be added to your `AndroidManifest.
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
-The RECORD_AUDIO permissions is for recording audio.
+The RECORD_AUDIO permission is for recording audio.
 
 Read about [Setting Permissions](https://capacitorjs.com/docs/android/configuration#setting-permissions) in the [Android Guide](https://capacitorjs.com/docs/android) for more information on setting Android permissions.
 
