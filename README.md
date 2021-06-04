@@ -1,7 +1,16 @@
-# @mozartec/capacitor-microphone
+<div align="center">
+  <h1>Mozartec Capacitor Microphone</h1>
+  <h2>@mozartec/capacitor-microphone</h2>
 
 This Microphone API provides the ability to interact with the microphone and record Audio
 
+[![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/mozartec/capacitor-microphone/graphs/commit-activity) [![License](https://img.shields.io/npm/l/@mozartec/capacitor-microphone.svg)](/LICENSE) 
+  <br>
+[![Dependency Status](https://david-dm.org/mozartec/capacitor-microphone.svg)](https://david-dm.org/mozartec/capacitor-microphone) [![devDependency Status](https://david-dm.org/mozartec/capacitor-microphone/dev-status.svg)](https://david-dm.org/mozartec/capacitor-microphone?type=dev)
+  <br>
+[![npm version](https://badge.fury.io/js/%40mozartec%2Fcapacitor-microphone.svg)](https://www.npmjs.com/package/@mozartec/capacitor-microphone) [![NPM Downloads](https://img.shields.io/npm/dw/@mozartec/capacitor-microphone)](https://www.npmjs.com/package/@mozartec/capacitor-microphone)
+</div>
+  
 ## Platform support
 |              | iOS                  | Android            | Web                |
 | ------------ |--------------------- | ------------------ | ------------------ |
