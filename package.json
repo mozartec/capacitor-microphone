@@ -30,7 +30,9 @@
     "ios",
     "android",
     "microphone",
-    "audio recorder"
+    "audio recorder",
+    "ionic audio recorder",
+    "capacitor audio recorder"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
