@@ -28,6 +28,9 @@ npm install @mozartec/capacitor-microphone
 npx cap sync
 ```
 
+## Demo
+[Demo code](_demo/)
+
 ## iOS
 
 iOS requires the following usage description to be added and filled out for your app in `Info.plist`:
