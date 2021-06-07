@@ -46,10 +46,12 @@
 
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>Data Urls</ion-label>
+        <ion-label>Data Urls (Verify on)</ion-label>
+        <ion-input value="https://base64.guru/converter/decode/audio" readonly></ion-input>
       </ion-item-divider>
       <ion-item *ngFor="let dataUrl of dataUrls">
-        <ion-input value="{{dataUrl}}"></ion-input>
+        <ion-label position="floating">Data Url</ion-label>
+        <ion-textarea value="{{dataUrl}}"></ion-textarea>
       </ion-item>
     </ion-item-group>
   </ion-list>

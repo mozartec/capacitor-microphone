@@ -1,6 +1,6 @@
 {
   "name": "@mozartec/capacitor-microphone",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "This Microphone API provides the ability to interact with the microphone and record Audio",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -30,7 +30,9 @@
     "ios",
     "android",
     "microphone",
-    "audio recorder"
+    "audio recorder",
+    "ionic audio recorder",
+    "capacitor audio recorder"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",

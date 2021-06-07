@@ -73,7 +73,9 @@ export interface AudioRecording {
   format?: string;
 
   /**
-   * file encoding (kAudioFormatMPEG4AAC for IOS) and (MPEG_4 / AAC for android) both return "audio/aac"
+   * file encoding "audio/aac"
+   * (kAudioFormatMPEG4AAC for iOS) 
+   * (MPEG_4 / AAC for Android)
    *
    * @since 0.0.3
    */

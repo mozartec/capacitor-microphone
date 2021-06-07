@@ -28,6 +28,9 @@ npm install @mozartec/capacitor-microphone
 npx cap sync
 ```
 
+## Demo
+[Demo code](_demo/)
+
 ## iOS
 
 iOS requires the following usage description to be added and filled out for your app in `Info.plist`:
@@ -135,7 +138,7 @@ Stops recoding session if one is in progress
 | **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing. |
 | **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                               |
 | **`format`**       | <code>string</code> | file extension (only .m4a supported on this version)                                                            |
-| **`mimeType`**     | <code>string</code> | file encoding (kAudioFormatMPEG4AAC for IOS) and (MPEG_4 / AAC for android) both return "audio/aac"             |
+| **`mimeType`**     | <code>string</code> | file encoding "audio/aac" (kAudioFormatMPEG4AAC for iOS) (MPEG_4 / AAC for Android)                             |
 
 
 ### Type Aliases
