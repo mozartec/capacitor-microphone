@@ -28,8 +28,8 @@ npm install @mozartec/capacitor-microphone
 npx cap sync
 ```
 
-## Demo
-[Demo code](_demo/)
+## Support
+Support for Capacitor 5
 
 ## iOS
 
