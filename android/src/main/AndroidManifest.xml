@@ -1,3 +1,2 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mozartec.capacitor.microphone">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 </manifest>
