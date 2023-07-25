@@ -4,7 +4,9 @@ const config: CapacitorConfig = {
   appId: 'com.mozartec.capacitor.microphone.angular',
   appName: 'AngularMicrophone',
   webDir: 'www',
-  bundledWebRuntime: false
+  server: {
+    androidScheme: 'https'
+  }
 };
 
 export default config;

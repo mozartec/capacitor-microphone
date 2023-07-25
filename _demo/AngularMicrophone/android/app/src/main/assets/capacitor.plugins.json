@@ -12,6 +12,10 @@
 		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
 	},
 	{
+		"pkg": "@capacitor/status-bar",
+		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+	},
+	{
 		"pkg": "@mozartec/capacitor-microphone",
 		"classpath": "com.mozartec.capacitor.microphone.MicrophonePlugin"
 	}
