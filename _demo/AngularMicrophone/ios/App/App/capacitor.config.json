@@ -4,5 +4,13 @@
 	"webDir": "www",
 	"server": {
 		"androidScheme": "https"
-	}
+	},
+	"packageClassList": [
+		"AppPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"StatusBarPlugin",
+		"MicrophonePlugin",
+		"MicrophonePlugin"
+	]
 }
