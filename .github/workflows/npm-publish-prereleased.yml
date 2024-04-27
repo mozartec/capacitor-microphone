@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [published]
+    types: [prereleased]
 
 jobs:
   build:
@@ -31,7 +31,7 @@ jobs:
           node-version: '18.x'
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish --access public
+      - run: npm publish --access public --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -48,6 +48,6 @@ jobs:
           node-version: '18.x'
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
