@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    namespace "com.mozartec.capacitor.microphone.angular"
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.mozartec.capacitor.microphone.angular"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -30,6 +31,8 @@ repositories {
 }
 
 dependencies {
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation project(':capacitor-android')

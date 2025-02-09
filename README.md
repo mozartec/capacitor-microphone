@@ -78,6 +78,8 @@ Checks microphone permission
 
 **Returns:** <code>Promise&lt;<a href="#permissionstatus">PermissionStatus</a>&gt;</code>
 
+**Since:** 0.0.3
+
 --------------------
 
 
@@ -91,6 +93,8 @@ Requests microphone permission
 
 **Returns:** <code>Promise&lt;<a href="#permissionstatus">PermissionStatus</a>&gt;</code>
 
+**Since:** 0.0.3
+
 --------------------
 
 
@@ -101,6 +105,8 @@ startRecording() => Promise<void>
 ```
 
 Starts recoding session if no session is in progress
+
+**Since:** 0.0.3
 
 --------------------
 
@@ -114,6 +120,8 @@ stopRecording() => Promise<AudioRecording>
 Stops recoding session if one is in progress
 
 **Returns:** <code>Promise&lt;<a href="#audiorecording">AudioRecording</a>&gt;</code>
+
+**Since:** 0.0.3
 
 --------------------
 
@@ -130,15 +138,15 @@ Stops recoding session if one is in progress
 
 #### AudioRecording
 
-| Prop               | Type                | Description                                                                                                     |
-| ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **`base64String`** | <code>string</code> | The base64 encoded string representation of the audio file.                                                     |
-| **`dataUrl`**      | <code>string</code> | The url starting with 'data:audio/aac;base64,' and the base64 encoded string representation of the audio file.  |
-| **`path`**         | <code>string</code> | platform-specific file URL that can be read later using the Filesystem API.                                     |
-| **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing. |
-| **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                               |
-| **`format`**       | <code>string</code> | file extension (only .m4a supported on this version)                                                            |
-| **`mimeType`**     | <code>string</code> | file encoding "audio/aac" (kAudioFormatMPEG4AAC for iOS) (MPEG_4 / AAC for Android)                             |
+| Prop               | Type                | Description                                                                                                     | Since |
+| ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- | ----- |
+| **`base64String`** | <code>string</code> | The base64 encoded string representation of the audio file.                                                     | 0.0.3 |
+| **`dataUrl`**      | <code>string</code> | The url starting with 'data:audio/aac;base64,' and the base64 encoded string representation of the audio file.  | 0.0.3 |
+| **`path`**         | <code>string</code> | platform-specific file URL that can be read later using the Filesystem API.                                     | 0.0.3 |
+| **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing. | 0.0.3 |
+| **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                               | 0.0.3 |
+| **`format`**       | <code>string</code> | file extension (only .m4a supported on this version)                                                            | 0.0.3 |
+| **`mimeType`**     | <code>string</code> | file encoding "audio/aac" (kAudioFormatMPEG4AAC for iOS) (MPEG_4 / AAC for Android)                             | 0.0.3 |
 
 
 ### Type Aliases
