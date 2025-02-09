@@ -8,7 +8,7 @@ import { Microphone, AudioRecording } from '@mozartec/capacitor-microphone';
 })
 export class HomeComponent implements OnInit {
 
-  recording: AudioRecording;
+  recording!: AudioRecording;
   webPaths = [];
   dataUrls = [];
 
@@ -54,7 +54,9 @@ export class HomeComponent implements OnInit {
       console.log('recording.mimeType: ' + JSON.stringify(this.recording.mimeType));
       console.log('recording.path: ' + JSON.stringify(this.recording.path));
       console.log('recording.webPath: ' + JSON.stringify(this.recording.webPath));
+      // @ts-ignore
       this.webPaths.push(this.recording.webPath);
+      // @ts-ignore
       this.dataUrls.push(this.recording.dataUrl);
     } catch (error) {
       console.error('recordingResult Error: ' + JSON.stringify(error));
