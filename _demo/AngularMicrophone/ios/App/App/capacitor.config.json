@@ -10,7 +10,6 @@
 		"HapticsPlugin",
 		"KeyboardPlugin",
 		"StatusBarPlugin",
-		"MicrophonePlugin",
 		"MicrophonePlugin"
 	]
 }
