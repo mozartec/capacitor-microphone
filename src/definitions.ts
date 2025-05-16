@@ -17,9 +17,10 @@ export interface MicrophonePlugin {
 
   /**
    * Starts recoding session if no session is in progress
+   * @returns {Promise<{ status: string }>} Object with status message
    * @since 0.0.3
    */
-  startRecording(): Promise<void>;
+  startRecording(): Promise<{ status: string }>;
 
   /**
    * Stops recoding session if one is in progress

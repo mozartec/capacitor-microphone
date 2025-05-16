@@ -101,10 +101,12 @@ Requests microphone permission
 ### startRecording()
 
 ```typescript
-startRecording() => Promise<void>
+startRecording() => Promise<{ status: string; }>
 ```
 
 Starts recoding session if no session is in progress
+
+**Returns:** <code>Promise&lt;{ status: string; }&gt;</code>
 
 **Since:** 0.0.3
 
