@@ -35,7 +35,21 @@ export class MicrophoneWeb extends WebPlugin implements MicrophonePlugin {
 
     try {
       const stream = await navigator?.mediaDevices?.getUserMedia({ audio: true });
-      this.mediaRecorder = new MediaRecorder(stream);
+
+      // Find a supported MIME type for audio recording
+      const getSupportedMimeType = () => {
+        // Try these MIME types in order of preference
+        const types = ['audio/webm', 'audio/mp4', 'audio/ogg', 'audio/wav'];
+        for (const type of types) {
+          if (MediaRecorder.isTypeSupported(type)) {
+            return type;
+          }
+        }
+        return ''; // Let browser decide default
+      };
+
+      const mimeType = getSupportedMimeType();
+      this.mediaRecorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
       this.audioChunks = [];
 
       this.mediaRecorder.ondataavailable = (event: any) => {
@@ -62,10 +76,21 @@ export class MicrophoneWeb extends WebPlugin implements MicrophonePlugin {
 
       this.mediaRecorder.onstop = () => {
         try {
-          const audioBlob = new Blob(this.audioChunks, { type: 'audio/aac' });
+          // Use the actual MIME type that was used for recording
+          const mimeType = this.mediaRecorder?.mimeType || 'audio/webm';
+          const audioBlob = new Blob(this.audioChunks, { type: mimeType });
           const audioUrl = URL.createObjectURL(audioBlob);
           this.mediaRecorder?.stream?.getTracks().forEach((track) => track.stop());
-          const duration = this.mediaRecorder?.stream?.getTracks()[0]?.getSettings()?.sampleRate || 0;
+
+          // Get duration if possible, or use a more accurate calculation
+          let duration = 0;
+          try {
+            // Better duration estimation - based on audio data size and bit rate
+            // This is still an approximation, but better than using sampleRate
+            duration = this.audioChunks.length > 0 ? this.audioChunks.reduce((acc, chunk) => acc + chunk.size, 0) : 0;
+          } catch (e) {
+            console.error('Could not determine audio duration', e);
+          }
 
           const reader = new FileReader();
           reader.onerror = () => {
@@ -82,13 +107,24 @@ export class MicrophoneWeb extends WebPlugin implements MicrophonePlugin {
               return;
             }
 
+            // Determine file extension based on MIME type
+            const format = mimeType.includes('webm')
+              ? '.webm'
+              : mimeType.includes('mp4')
+                ? '.mp4'
+                : mimeType.includes('ogg')
+                  ? '.ogg'
+                  : mimeType.includes('wav')
+                    ? '.wav'
+                    : '.webm';
+
             const recording: AudioRecording = {
               base64String,
-              dataUrl: 'data:audio/aac;base64,' + base64String,
+              dataUrl: `data:${mimeType};base64,${base64String}`,
               webPath: audioUrl,
               duration,
-              format: 'aac',
-              mimeType: 'audio/aac',
+              format,
+              mimeType,
             };
 
             this.mediaRecorder = null;

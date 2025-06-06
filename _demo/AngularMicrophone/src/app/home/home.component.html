@@ -1,58 +1,155 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Home
+      Capacitor Microphone Tester
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-list lines="none">
+  <div class="recording-status" [ngClass]="{'active': isRecording}">
+    <ion-icon [name]="isRecording ? 'radio' : 'radio-outline'" class="status-icon"></ion-icon>
+    <div class="recording-indicator">
+      <div class="recording-text">{{ isRecording ? 'Recording' : 'Ready' }}</div>
+      <div class="recording-timer">{{ recordingTime }}</div>
+    </div>
+  </div>
+
+  <div class="verification-site-banner">
+    <ion-label>Data URL Verification:</ion-label>
+    <a href="{{dataUrlVerificationSite}}" target="_blank" rel="noopener">
+      <ion-chip color="success" outline>
+        <ion-icon name="open-outline"></ion-icon>
+        <ion-label>{{dataUrlVerificationSite}}</ion-label>
+      </ion-chip>
+    </a>
+  </div>
+
+  <ion-list lines="none" class="main-list">
     <ion-item-group>
-      <ion-item-divider>
-        <ion-label>Actions</ion-label>
+      <ion-item-divider color="light">
+        <ion-label>Controls</ion-label>
       </ion-item-divider>
 
-      <ion-item button color="primary" (click)="checkPermissions()">
-        <ion-label>Check Permissions</ion-label>
-      </ion-item>
-      <ion-item button color="secondary" (click)="requestPermissions()">
-        <ion-label>Request Permissions</ion-label>
-      </ion-item>
-      <ion-item button color="tertiary" (click)="startRecording()">
-        <ion-label>Start Recording</ion-label>
-      </ion-item>
-      <ion-item button color="success" (click)="stopRecording()">
-        <ion-label>Stop Recording</ion-label>
-      </ion-item>
+      <div class="action-buttons">
+        <ion-button expand="block" color="primary" (click)="checkPermissions()" class="action-button">
+          <ion-icon name="shield-checkmark" slot="start"></ion-icon>
+          Check Permissions
+        </ion-button>
+        <ion-button expand="block" color="secondary" (click)="requestPermissions()" class="action-button">
+          <ion-icon name="key" slot="start"></ion-icon>
+          Request Permissions
+        </ion-button>
+        <ion-button expand="block" color="tertiary" (click)="startRecording()" class="action-button">
+          <ion-icon name="mic" slot="start"></ion-icon>
+          Start Recording
+        </ion-button>
+        <ion-button expand="block" color="danger" (click)="stopRecording()" class="action-button">
+          <ion-icon name="stop" slot="start"></ion-icon>
+          Stop Recording
+        </ion-button>
+      </div>
     </ion-item-group>
 
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label>Web Paths</ion-label>
+    <!-- Combined Recordings Section -->
+    <ion-item-group *ngIf="recordingDetails.length > 0">
+      <ion-item-divider color="light">
+        <ion-label>Recording Results</ion-label>
       </ion-item-divider>
-      <ion-item *ngFor="let webPath of webPaths">
-        <audio controls>
-          <source src="{{webPath}}" type="{{recording?.mimeType}}">
-          Your browser does not support the audio element.
-        </audio>
-      </ion-item>
-    </ion-item-group>
 
-    <ion-item-group>
-      <ion-item-divider>
-        <ion-label>Data Urls (Verify on)</ion-label>
-        <ion-input value="https://base64.guru/converter/decode/audio" readonly></ion-input>
-      </ion-item-divider>
-      <ion-item *ngFor="let dataUrl of dataUrls">
-        <ion-label position="floating">Data Url</ion-label>
-        <ion-textarea value="{{dataUrl}}"></ion-textarea>
-      </ion-item>
+      <ion-card *ngFor="let record of recordingDetails" class="recording-card">
+        <ion-card-header (click)="toggleRecordingDetails(record)" class="clickable-header">
+          <ion-card-subtitle>
+            <div class="recording-header">
+              <span>Recording #{{record.index}}</span>
+              <div class="header-controls">
+                <ion-badge color="medium" class="recording-timer-badge">{{record.recordingTime}}</ion-badge>
+                <ion-icon [name]="record.expanded ? 'chevron-up' : 'chevron-down'" class="collapse-icon"></ion-icon>
+              </div>
+            </div>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="record.expanded">
+          <!-- Audio Player -->
+          <div class="audio-container">
+            <ion-label>Audio Player</ion-label>
+            <audio controls class="audio-player">
+              <source [src]="record.webPath" [type]="record.mimeType">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <!-- Recording Details -->
+          <ion-list lines="full" class="details-list">
+            <ion-item>
+              <ion-label position="stacked">Format</ion-label>
+              <div class="copy-field">
+                <ion-input readonly [value]="record.format"></ion-input>
+                <ion-button fill="clear" size="small" (click)="copyToClipboard(record.format, 'Format')">
+                  <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">MIME Type</ion-label>
+              <div class="copy-field">
+                <ion-input readonly [value]="record.mimeType"></ion-input>
+                <ion-button fill="clear" size="small" (click)="copyToClipboard(record.mimeType, 'MIME Type')">
+                  <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Duration</ion-label>
+              <div class="copy-field">
+                <ion-input readonly [value]="record.duration + ' ms'"></ion-input>
+                <ion-button fill="clear" size="small" (click)="copyToClipboard(record.duration, 'Duration')">
+                  <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Path</ion-label>
+              <div class="copy-field">
+                <ion-input readonly [value]="record.path"></ion-input>
+                <ion-button fill="clear" size="small" (click)="copyToClipboard(record.path, 'Path')">
+                  <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Web Path</ion-label>
+              <div class="copy-field">
+                <ion-input readonly [value]="record.webPath"></ion-input>
+                <ion-button fill="clear" size="small" (click)="copyToClipboard(record.webPath, 'Web Path')">
+                  <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Data URL</ion-label>
+              <div class="copy-field data-url-field">
+                <ion-textarea readonly [value]="record.dataUrl" rows="2" class="data-url-textarea"></ion-textarea>
+                <div class="data-url-actions">
+                  <ion-button fill="clear" size="small" (click)="copyToClipboard(record.dataUrl, 'Data URL')">
+                    <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+                  </ion-button>
+                  <ion-button fill="clear" color="success" size="small" [href]="dataUrlVerificationSite" target="_blank" rel="noopener">
+                    <ion-icon name="open-outline"></ion-icon>
+                    <ion-label>Verify</ion-label>
+                  </ion-button>
+                </div>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
     </ion-item-group>
   </ion-list>
 </ion-content>
