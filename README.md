@@ -29,7 +29,8 @@ npx cap sync
 ```
 
 ## Demo
-[Demo code](_demo/)
+- **[🌐 Live Demo](https://mozartec.github.io/capacitor-microphone/)** - Try the plugin in your browser
+- [📁 Demo source code](_demo/)
 
 ## iOS
 
