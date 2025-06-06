@@ -14,9 +14,9 @@ This Microphone API provides the ability to interact with the microphone and rec
 ## Platform support
 |              | iOS                  | Android            | Web                |
 | ------------ |--------------------- | ------------------ | ------------------ |
-| Availability | :heavy_check_mark:   | :heavy_check_mark: | :x:                |
-| Encoding     | kAudioFormatMPEG4AAC | MPEG_4 / AAC       | :x:                |
-| Extension    | .m4a                 | .m4a               | :x:                |
+| Availability | :heavy_check_mark:   | :heavy_check_mark: | :heavy_check_mark: |
+| Encoding     | kAudioFormatMPEG4AAC | MPEG_4 / AAC       | AAC                |
+| Extension    | .m4a                 | .m4a               | .aac               |
 
 
 ## Installation
@@ -101,10 +101,12 @@ Requests microphone permission
 ### startRecording()
 
 ```typescript
-startRecording() => Promise<void>
+startRecording() => Promise<{ status: string; }>
 ```
 
 Starts recoding session if no session is in progress
+
+**Returns:** <code>Promise&lt;{ status: string; }&gt;</code>
 
 **Since:** 0.0.3
 
@@ -145,8 +147,8 @@ Stops recoding session if one is in progress
 | **`path`**         | <code>string</code> | platform-specific file URL that can be read later using the Filesystem API.                                     | 0.0.3 |
 | **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing. | 0.0.3 |
 | **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                               | 0.0.3 |
-| **`format`**       | <code>string</code> | file extension (only .m4a supported on this version)                                                            | 0.0.3 |
-| **`mimeType`**     | <code>string</code> | file encoding "audio/aac" (kAudioFormatMPEG4AAC for iOS) (MPEG_4 / AAC for Android)                             | 0.0.3 |
+| **`format`**       | <code>string</code> | file extension (.m4a on mobile, and .aac on web)                                                                | 0.0.3 |
+| **`mimeType`**     | <code>string</code> | file encoding "audio/aac" (kAudioFormatMPEG4AAC for iOS) (MPEG_4 / AAC for Android) (AAC for Web)               | 0.0.3 |
 
 
 ### Type Aliases

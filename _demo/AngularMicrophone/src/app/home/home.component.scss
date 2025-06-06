@@ -1,3 +1,241 @@
 ion-item {
-    padding: 2px;
+  padding: 8px;
+}
+
+.main-list {
+  padding: 10px;
+}
+
+ion-item-divider {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.verification-site-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #f0f9ff;
+  margin: 0 15px 15px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  gap: 10px;
+
+  ion-label {
+    color: #555;
+    font-weight: 500;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ion-chip {
+    margin: 0;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.action-button {
+  margin: 0;
+  --border-radius: 8px;
+}
+
+.recording-status {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #f4f5f8;
+  border-radius: 12px;
+  margin: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.recording-status.active {
+  background: #ffe6e6;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+.status-icon {
+  font-size: 2.5rem;
+  margin-right: 15px;
+  color: #777;
+}
+
+.recording-status.active .status-icon {
+  color: #f04141;
+  animation: pulse 1.5s infinite;
+}
+
+.recording-indicator {
+  flex: 1;
+}
+
+.recording-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.recording-status.active .recording-text {
+  color: #f04141;
+}
+
+.recording-timer {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 5px;
+  color: #555;
+}
+
+.recording-status.active .recording-timer {
+  color: #f04141;
+}
+
+.recording-item, .data-url-item {
+  margin-bottom: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recording-entry {
+  width: 100%;
+  padding: 5px;
+}
+
+.recording-index {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+// New styles for improved recording cards
+.recording-card {
+  margin: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-header {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  &:active {
+    background-color: #e5e5e5;
+  }
+}
+
+.recording-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recording-timer-badge {
+  font-size: 0.9rem;
+  padding: 6px 10px;
+}
+
+.audio-container {
+  margin-bottom: 16px;
+  padding: 10px;
+  background-color: #f4f5f8;
+  border-radius: 8px;
+}
+
+.audio-player {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.details-list {
+  background-color: transparent;
+  padding: 0;
+}
+
+.copy-field {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.data-url-field {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.data-url-textarea {
+  width: 100%;
+  margin: 0;
+  --padding-start: 10px;
+}
+
+.data-url-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 0 8px 8px 0;
+}
+
+ion-textarea {
+  --background: #f9f9f9;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+ion-input {
+  --background: #f9f9f9;
+  --padding-start: 10px;
+  font-size: 0.9rem;
+}
+
+.collapse-icon {
+  font-size: 1.25rem;
+  color: #777;
+  transition: transform 0.3s ease;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

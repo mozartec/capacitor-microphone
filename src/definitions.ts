@@ -17,9 +17,10 @@ export interface MicrophonePlugin {
 
   /**
    * Starts recoding session if no session is in progress
+   * @returns {Promise<{ status: string }>} Object with status message
    * @since 0.0.3
    */
-  startRecording(): Promise<void>;
+  startRecording(): Promise<{ status: string }>;
 
   /**
    * Stops recoding session if one is in progress
@@ -66,7 +67,7 @@ export interface AudioRecording {
   duration: number;
 
   /**
-   * file extension (only .m4a supported on this version) 
+   * file extension (.m4a on mobile, and .aac on web)
    *
    * @since 0.0.3
    */
@@ -74,8 +75,9 @@ export interface AudioRecording {
 
   /**
    * file encoding "audio/aac"
-   * (kAudioFormatMPEG4AAC for iOS) 
+   * (kAudioFormatMPEG4AAC for iOS)
    * (MPEG_4 / AAC for Android)
+   * (AAC for Web)
    *
    * @since 0.0.3
    */
