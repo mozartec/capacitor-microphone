@@ -164,3 +164,13 @@ Stops recoding session if one is in progress
 <code>'prompt' | 'prompt-with-rationale' | 'granted' | 'denied'</code>
 
 </docgen-api>
+
+## Contributors
+
+Thanks to all the people who have contributed to this project! 🙏
+
+<a href="https://github.com/mozartec/capacitor-microphone/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mozartec/capacitor-microphone" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks)
