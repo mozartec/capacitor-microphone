@@ -67,17 +67,18 @@ export interface AudioRecording {
   duration: number;
 
   /**
-   * file extension (.m4a on mobile, and .aac on web)
+   * file extension:
+   * ".m4a" for (iOS and Android) and
+   * ".webm" | ".mp4" | ".ogg" | ".wav" for Web based on compatibility
    *
    * @since 0.0.3
    */
   format?: string;
 
   /**
-   * file encoding "audio/aac"
-   * (kAudioFormatMPEG4AAC for iOS)
-   * (MPEG_4 / AAC for Android)
-   * (AAC for Web)
+   * file encoding:
+   * "audio/aac" for (iOS and Android) and
+   * "audio/webm | "audio/mp4" | "audio/ogg" | "audio/wav" for Web based on compatibility
    *
    * @since 0.0.3
    */

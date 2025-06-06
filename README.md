@@ -12,11 +12,11 @@ This Microphone API provides the ability to interact with the microphone and rec
 </div>
   
 ## Platform support
-|              | iOS                  | Android            | Web                |
+|              | iOS                  | Android            | Web (Preview)                |
 | ------------ |--------------------- | ------------------ | ------------------ |
 | Availability | :heavy_check_mark:   | :heavy_check_mark: | :heavy_check_mark: |
-| Encoding     | kAudioFormatMPEG4AAC | MPEG_4 / AAC       | AAC                |
-| Extension    | .m4a                 | .m4a               | .aac               |
+| Encoding     | kAudioFormatMPEG4AAC (audio/aac) | MPEG_4 / AAC (audio/aac)       | audio/webm or audio/mp4 or audio/ogg or audio/wav               |
+| Extension    | .m4a                 | .m4a               | .webm or .mp4 or .ogg or .wav               |
 
 
 ## Installation
@@ -140,15 +140,15 @@ Stops recoding session if one is in progress
 
 #### AudioRecording
 
-| Prop               | Type                | Description                                                                                                     | Since |
-| ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- | ----- |
-| **`base64String`** | <code>string</code> | The base64 encoded string representation of the audio file.                                                     | 0.0.3 |
-| **`dataUrl`**      | <code>string</code> | The url starting with 'data:audio/aac;base64,' and the base64 encoded string representation of the audio file.  | 0.0.3 |
-| **`path`**         | <code>string</code> | platform-specific file URL that can be read later using the Filesystem API.                                     | 0.0.3 |
-| **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing. | 0.0.3 |
-| **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                               | 0.0.3 |
-| **`format`**       | <code>string</code> | file extension (.m4a on mobile, and .aac on web)                                                                | 0.0.3 |
-| **`mimeType`**     | <code>string</code> | file encoding "audio/aac" (kAudioFormatMPEG4AAC for iOS) (MPEG_4 / AAC for Android) (AAC for Web)               | 0.0.3 |
+| Prop               | Type                | Description                                                                                                                                  | Since |
+| ------------------ | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **`base64String`** | <code>string</code> | The base64 encoded string representation of the audio file.                                                                                  | 0.0.3 |
+| **`dataUrl`**      | <code>string</code> | The url starting with 'data:audio/aac;base64,' and the base64 encoded string representation of the audio file.                               | 0.0.3 |
+| **`path`**         | <code>string</code> | platform-specific file URL that can be read later using the Filesystem API.                                                                  | 0.0.3 |
+| **`webPath`**      | <code>string</code> | webPath returns a path that can be used to set the src attribute of an audio element can be useful for testing.                              | 0.0.3 |
+| **`duration`**     | <code>number</code> | recoding duration in milliseconds                                                                                                            | 0.0.3 |
+| **`format`**       | <code>string</code> | file extension: ".m4a" for (iOS and Android) and ".webm" \| ".mp4" \| ".ogg" \| ".wav" for Web based on compatibility                        | 0.0.3 |
+| **`mimeType`**     | <code>string</code> | file encoding: "audio/aac" for (iOS and Android) and "audio/webm \| "audio/mp4" \| "audio/ogg" \| "audio/wav" for Web based on compatibility | 0.0.3 |
 
 
 ### Type Aliases
