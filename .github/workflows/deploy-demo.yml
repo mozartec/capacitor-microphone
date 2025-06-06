@@ -1,0 +1,66 @@
+name: Build and Deploy Demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Install demo dependencies
+        working-directory: _demo/AngularMicrophone
+        run: npm ci
+
+      - name: Build Angular demo for production
+        working-directory: _demo/AngularMicrophone
+        run: |
+          npm run build -- --configuration production --base-href /capacitor-microphone/
+          # Create .nojekyll file to prevent Jekyll processing
+          touch www/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _demo/AngularMicrophone/www
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
